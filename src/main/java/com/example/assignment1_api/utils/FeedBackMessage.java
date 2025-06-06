@@ -1,4 +1,4 @@
-package com.example.assignment1_api.Utils;
+package com.example.assignment1_api.utils;
 
 public class FeedBackMessage {
     /*======================== Start User API=====================================*/

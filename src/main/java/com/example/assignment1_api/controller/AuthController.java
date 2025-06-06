@@ -1,6 +1,6 @@
 package com.example.assignment1_api.controller;
 
-import com.example.assignment1_api.Utils.FeedBackMessage;
+import com.example.assignment1_api.utils.FeedBackMessage;
 import com.example.assignment1_api.dto.EntityConverter;
 import com.example.assignment1_api.dto.identity.TokenExchangeResponse;
 import com.example.assignment1_api.dto.user.UserDto;
@@ -26,7 +26,7 @@ import javax.security.sasl.AuthenticationException;
 import static org.springframework.http.HttpStatus.CREATED;
 
 @RestController
-@RequestMapping("/api/v1/auth")
+@RequestMapping("/api/auth")
 @RequiredArgsConstructor
 public class AuthController {
     private final UserService userService;

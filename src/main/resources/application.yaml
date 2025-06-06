@@ -1,5 +1,5 @@
 server:
-  port: 8183
+  port: 8182
 
 spring:
   datasource:
@@ -18,15 +18,15 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:9090/realms/assignment1
+          issuer-uri: http://localhost:9090/realms/Assignment
 
 
 idp:
   url: http://localhost:9090
   client-id: assignment1
-  client-secret: OeohUWnKwfXZtHHSw8iRt5UDRu18OeKe
+  client-secret: dOt5xW5P3XgrN42gCkTJe3pwdYnCIfOS
 keycloak:
   realm: Assignment
   admin-username: admin
-  admin-password: admin123
+  admin-password: 12345678
 
