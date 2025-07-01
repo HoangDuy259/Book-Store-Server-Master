@@ -1,9 +1,12 @@
 server:
   port: 8182
+  servlet:
+    context-path: /bookstore
+
 
 spring:
   datasource:
-    url: "jdbc:postgresql://localhost:6543/custom-provider"
+    url: "jdbc:postgresql://localhost:6543/book-store-db"
     username: "postgres"
     password: "12345"
     driver-class-name: org.postgresql.Driver
@@ -24,9 +27,13 @@ spring:
 idp:
   url: http://localhost:9090
   client-id: assignment1
-  client-secret: dOt5xW5P3XgrN42gCkTJe3pwdYnCIfOS
+  client-secret: KV0G7UPVZIgQ0EYpbh5Yj3zQfGUbuDCh
 keycloak:
   realm: Assignment
   admin-username: admin
-  admin-password: 12345678
+  admin-password: admin123
+
+
+storage:
+  location: uploads/images
 
