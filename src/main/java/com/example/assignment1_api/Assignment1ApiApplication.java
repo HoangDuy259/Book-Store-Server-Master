@@ -13,5 +13,4 @@ public class Assignment1ApiApplication {
     public static void main(String[] args) {
         SpringApplication.run(Assignment1ApiApplication.class, args);
     }
-
 }

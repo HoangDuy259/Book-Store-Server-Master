@@ -1,18 +1,17 @@
 package com.example.assignment1_api.controller;
 
+import com.example.assignment1_api.dto.request.UserRegisterRequest;
 import com.example.assignment1_api.utils.FeedBackMessage;
-import com.example.assignment1_api.dto.EntityConverter;
 import com.example.assignment1_api.dto.identity.TokenExchangeResponse;
-import com.example.assignment1_api.dto.user.UserDto;
-import com.example.assignment1_api.entity.user.User;
-import com.example.assignment1_api.repository.UserRepository;
-import com.example.assignment1_api.request.RegisterUserModel;
-import com.example.assignment1_api.request.user.LoginRequest;
-import com.example.assignment1_api.response.ApiResponse;
-import com.example.assignment1_api.service.user.UserService;
+import com.example.assignment1_api.dto.response.user.UserResponse;
+import com.example.assignment1_api.dto.request.LoginRequest;
+import com.example.assignment1_api.dto.response.ApiResponse;
+import com.example.assignment1_api.service.UserService;
 import jakarta.validation.Valid;
+import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 //import io.swagger.v3.oas.annotations.Operation;
+import lombok.experimental.FieldDefaults;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.DisabledException;
@@ -28,22 +27,17 @@ import static org.springframework.http.HttpStatus.CREATED;
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class AuthController {
-    private final UserService userService;
-    private final EntityConverter<User, UserDto> entityConverter;
-    private final UserRepository userRepository;
+    UserService userService;
 
-//    @Operation(summary = "API đăng kí tài khoản mới")
     @PostMapping("/register")
-    public ResponseEntity<ApiResponse<UserDto>> register(
-            @RequestBody @Valid RegisterUserModel registerUserModel) {
+    public ResponseEntity<ApiResponse<UserResponse>> register(
+            @RequestBody @Valid UserRegisterRequest userRegisterRequest) {
         try {
-            // Thực hiện đăng ký người dùng
-            User userRegister = userService.register(registerUserModel);
-            UserDto registeredUser = entityConverter.mapEntityToDto(userRegister, UserDto.class);
-            // Trả về ApiResponse với thông báo thành công
             return ResponseEntity.status(CREATED)
-                    .body(new ApiResponse<>(FeedBackMessage.CREATE_USER_SUCCESS, registeredUser));
+                    .body(new ApiResponse<>(FeedBackMessage.CREATE_USER_SUCCESS,
+                            userService.register(userRegisterRequest)));
         }catch (IllegalArgumentException  e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                     .body(new ApiResponse<>(e.getMessage(), null));

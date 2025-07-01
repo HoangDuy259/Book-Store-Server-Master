@@ -2,13 +2,13 @@ package com.example.assignment1_api.controller;
 
 import com.example.assignment1_api.entity.user.User;
 import com.example.assignment1_api.repository.UserRepository;
-import com.example.assignment1_api.service.report.ReportService;
+import com.example.assignment1_api.service.ReportService;
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import net.sf.jasperreports.engine.JRException;
 import org.springframework.http.HttpHeaders;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

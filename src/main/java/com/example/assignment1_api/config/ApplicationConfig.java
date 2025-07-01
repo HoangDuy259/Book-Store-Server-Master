@@ -1,13 +1,11 @@
 package com.example.assignment1_api.config;
 
-import org.modelmapper.ModelMapper;
+import com.example.assignment1_api.utils.StringUtils;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class ApplicationConfig {
     @Bean
-    public ModelMapper modelMapper(){
-        return new ModelMapper();
-    }
+    public StringUtils util(){return new StringUtils();}
 }
